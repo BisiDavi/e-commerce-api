@@ -1,16 +1,15 @@
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import logger from './logger';
-import config from './config';
 
+dotenv.config();
 /**
  * Connect To Database
  */
 const connectDB = async () => {
-  const DB = config.db.url.replace('<PASSWORD>', config.db.password);
-
   mongoose.set('autoIndex', true);
 
-  const con = await mongoose.connect(DB, {
+  const con = await mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     autoIndex: true

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import Joi from 'joi';
 
-dotenv.config({ path: 'config.env' });
+dotenv.config();
 
 const envVarsSchema = Joi.object()
   .keys({
@@ -9,9 +9,7 @@ const envVarsSchema = Joi.object()
       .valid('production', 'development', 'test')
       .required(),
     PORT: Joi.number().default(3000),
-    DATABASE_CONNECTION: Joi.string().required().description('MongoDB URL'),
-    DATABASE_PASSWORD: Joi.string().required().description('MongoDB Password'),
-    JWT_SECRET: Joi.string().required().description('JWT Secret Key'),
+    JWT_SECRET: Joi.string().description('JWT Secret Key'),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number()
       .default(30)
       .description('Minutes After Which Access Tokens Expire'),
