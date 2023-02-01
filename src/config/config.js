@@ -8,7 +8,7 @@ const envVarsSchema = Joi.object()
     NODE_ENV: Joi.string()
       .valid('production', 'development', 'test')
       .required(),
-    PORT: Joi.number().default(3000),
+    // PORT: Joi.number().default(3000),
     JWT_SECRET: Joi.string().description('JWT Secret Key'),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number()
       .default(30)
@@ -46,7 +46,7 @@ if (error) {
 const config = {
   env: envVars.NODE_ENV,
   server: {
-    port: envVars.PORT
+    port: process.env.PORT || 3000
   },
   db: {
     url: envVars.DATABASE_CONNECTION,
