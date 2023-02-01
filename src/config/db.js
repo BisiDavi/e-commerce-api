@@ -8,7 +8,7 @@ dotenv.config();
  */
 const connectDB = async () => {
   mongoose.set('autoIndex', true);
-
+  mongoose.set('strictQuery', false);
   const con = await mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
