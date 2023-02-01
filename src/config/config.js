@@ -46,7 +46,7 @@ if (error) {
 const config = {
   env: envVars.NODE_ENV,
   server: {
-    port: process.env.PORT || 3000
+    port: 3000
   },
   db: {
     url: envVars.DATABASE_CONNECTION,
